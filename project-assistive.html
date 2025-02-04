@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirMo-V1.0 - Dhruv Bhilare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #76dbdb;
+            --text-color: #333333;
+            --background-color: #f0f0f0;
+            --header-footer-color: #2a9d8f;
+            --section-color: #908f8f;
+            --accent-color: #e76f51;
+            --header-outline: #264653;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        nav {
+            background-color: var(--header-footer-color);
+            padding: 1rem;
+            border-bottom: 3px solid var(--header-outline);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            border: 2px solid var(--text-color);
+            padding: 0.5rem;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .project-container {
+            background-color: var(--section-color);
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            display: flex;
+            gap: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-content {
+            flex: 1;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: var(--background-color);
+            border-radius: 8px;
+        }
+
+        .project-section h2 {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-section p {
+            margin-bottom: 1rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            color: var(--primary-color);
+        }
+
+        .youtube-link {
+            display: inline-block;
+            background-color: #ff0000;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        .youtube-link:hover {
+            background-color: #cc0000;
+        }
+
+        footer {
+            background-color: var(--header-footer-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-container {
+                flex-direction: column;
+            }
+
+            .project-image {
+                max-width: 100%;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">DB</a>
+            <div class="nav-links">
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#socials">Socials</a>
+                <a href="index.html#about">About Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="project-container">
+            <div class="project-image">
+                <a href="index.html" class="back-button">← Back to Projects</a>
+                <img src="pics/makewucpic.jpg" alt="Assistive Web Navigation Device">
+            </div>
+            <div class="project-content">
+                <h1 class="project-title">Assistive Web Navigation Device</h1>
+                
+                <div class="project-section">
+                    <h2>The Idea</h2>
+                    <p>This project was developed to empower differently-abled individuals to browse the internet
+                         and navigate their computers without relying on traditional keyboards and mice. It specifically 
+                         addresses challenges faced by individuals missing a hand, fingers, or an arm by offering a 
+                         fully customizable solution tailored to their needs.</p>
+                         <p> The current prototype is designed for individuals without hands, allowing them to control the mouse 
+                            cursor using head movements. Additional functionalities, such as clicking, voice typing, and keyboard 
+                            input, are integrated through touch sensor buttons on a wearable vest (a modified t-shirt). Built during 
+                            a hackathon, the prototype may appear rushed, but it laid the foundation for further development. 
+                            Some head-tracking technology and code were adapted from a previous immersive game controller project.</p>
+                </div>
+
+                <div class="project-section">
+                    <h2>How It Works</h2>
+                    <p>The device consists of a headband and a vest. The headband tracks head movements 
+                        using a built-in gyroscope and accelerometer, with backend software translating these movements into mouse cursor control.</p>
+                    <p>The vest features customizable buttons that can be tailored to user preferences.
+                         In the demonstration, the preset controls included:</p>
+                         <li>Activating voice typing using a Windows macro shortcut</li>
+                         <li>A mouse left click</li>
+                         <li>An enter key function</li>
+                         <li>A button to stop the cursor from moving if needed</li>
+                         <br>
+                         <p>One major drawback of the current prototype is its reliance on wired connections, which limits flexibility and ease of use.</p>
+                </div>
+
+                <div class="project-section">
+                    <h2>What's Next</h2>
+                    <p>Since this project was created for a hackathon, development paused once the event ended. 
+                        However, future improvements include designing a more refined vest and transitioning 
+                        the system to a fully wireless solution for greater usability.</p>
+                    
+                    
+                </div>
+
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="youtube-link">
+                    <i class="fab fa-youtube"></i> Watch on YouTube
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Dhruv Bhilare. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
