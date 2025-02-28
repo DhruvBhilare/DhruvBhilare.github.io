@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionMate - Dhruv Bhilare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #76dbdb;
+            --text-color: #333333;
+            --background-color: #f0f0f0;
+            --header-footer-color: #2a9d8f;
+            --section-color: #908f8f;
+            --accent-color: #e76f51;
+            --header-outline: #264653;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: transparent; /* Changed to transparent to show video */
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background video styling */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        nav {
+            background-color: var(--header-footer-color);
+            padding: 1rem;
+            border-bottom: 3px solid var(--header-outline);
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            border: 2px solid var(--text-color);
+            padding: 0.5rem;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            min-height: calc(100vh - 160px); /* Adjust based on header/footer height */
+        }
+
+        .project-container {
+            background-color: var(--section-color);
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            display: flex;
+            gap: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-image {
+            flex: 1;
+            max-width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-content {
+            flex: 1;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: var(--background-color);
+            border-radius: 8px;
+        }
+
+        .project-section h2 {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-section p {
+            margin-bottom: 1rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            color: var(--primary-color);
+        }
+
+        .youtube-link {
+            display: inline-block;
+            background-color: #ff0000;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .youtube-link:hover {
+            background-color: #cc0000;
+        }
+
+        .github-link {
+            display: inline-block;
+            background-color: #333333;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .github-link:hover {
+            background-color: #242424;
+        }
+
+        footer {
+            background-color: var(--header-footer-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .project-container {
+                flex-direction: column;
+            }
+
+            .project-image {
+                max-width: 100%;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+        <!-- Background Video -->
+        <video class="background-video" autoplay loop muted playsinline>
+            <source src="pics/10288594-hd_1920_1080_25fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">DB</a>
+            <div class="nav-links">
+                <a href="index.html#projects">Projects</a>
+                <a href="index.html#socials">Socials</a>
+                <a href="index.html#about">About Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="project-container">
+            <div class="project-image">
+                <a href="index.html" class="back-button">← Back to Projects</a>
+                <img src="pics/Visionmatepic.jpg" alt="Auto Room Lights">
+                <a href="https://www.youtube.com/watch?v=CSRnkaVR12M" target="_blank" class="youtube-link">
+                    <i class="fab fa-youtube"></i> Watch on YouTube
+                </a>
+                <a href="https://github.com/DhruvBhilare/AutoRoomLights" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i> View GitHub Files
+                </a>
+            </div>
+            <div class="project-content">
+                <h1 class="project-title">Auto Room Lights</h1>
+                
+                <div class="project-section">
+                    <h2>The Idea </h2>
+                    <p>VisionMate is my latest creation: (As of 2|28|25) </p> <p>An AI-powered, wearable device designed 
+                        to enhance accessibility for the visually impaired. The inspiration came
+                         from a real-life encounter at the Lindner Center of Business, where I 
+                         saw firsthand the challenges faced by a blind individual. It made me 
+                         reflect on how much I take my own 20/20 vision for granted—simple 
+                         tasks like reading a menu, recognizing faces, or distinguishing 
+                         between a $1 and a $20 bill are daily struggles for over 300 
+                         million visually impaired people worldwide.</p>
+                        <p>Existing solutions are often slow, expensive, and outdated. 
+                            With VisionMate, I set out to create a lightweight, intuitive,
+                             and affordable solution that enables users to experience their 
+                             surroundings in real time.</p>
+                             <p> Note: This project was developed during a hackathon with valuable contributions from my teammates:</p>
+                             <li>Aryan Metkar</li>
+                    <li>Sourabh Kharche</li>
+                    <li>Tejashree Aalla</li>
+
+                </div>
+
+                <div class="project-section">
+                    <h2>How It Works</h2>
+                    <p>VisionMate uses Google Gemini 1.5 Flash to analyze visual input from 
+                        a camera mounted on a pair of sunglasses. The AI-generated descriptions 
+                        are then converted into speech using Google Text-to-Speech, which is 
+                        delivered through bone-conducting speakers, allowing users to stay 
+                        aware of their environment while receiving information.
+
+                        But VisionMate does more than just describe surroundings:</p>
+                    <li>Currency Recognition – Instantly differentiates between various denominations.</li>
+                    <li>Text Translation – Reads and translates text into the user’s preferred language.</li>
+                    <li>Art Interpretation – Provides abstract descriptions of artworks for cultural enrichment.</li>
+                    <li>Real-Time Object & Scene Recognition – Helps users understand their immediate environment.</li>
+                    <br>
+
+                </div>
+
+                <div class="project-section">
+                    <h2>What's Next</h2>
+                    <p>VisionMate is currently in its first prototype phase, 
+                        but I have ambitious plans for future development:</p>
+                        <li>Reducing device size for improved portability and comfort.</li>
+                    <li>Enhancing AI accuracy for better object recognition and more natural language descriptions.</li>
+                    <li>Making it affordable to ensure accessibility for those who need it most.</li>
+                    <li>Exploring additional features, such as real-time navigation assistance.</li>
+                    <br>
+                </div>
+
+               
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Dhruv Bhilare. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
