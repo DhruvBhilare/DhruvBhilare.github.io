@@ -26,13 +26,28 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background-color: var(--background-color);
+            background-color: transparent; /* Changed to transparent to show video */
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background video styling */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
 
         nav {
             background-color: var(--header-footer-color);
             padding: 1rem;
             border-bottom: 3px solid var(--header-outline);
+            position: relative;
+            z-index: 1;
         }
 
         .nav-content {
@@ -81,6 +96,12 @@
             transform: scaleX(1);
         }
 
+        main {
+            position: relative;
+            z-index: 1;
+            min-height: calc(100vh - 160px); /* Adjust based on header/footer height */
+        }
+
         .project-container {
             background-color: var(--section-color);
             max-width: 1200px;
@@ -90,6 +111,8 @@
             gap: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
         }
 
         .project-image {
@@ -178,12 +201,13 @@
             background-color: #242424;
         }
 
-
         footer {
             background-color: var(--header-footer-color);
             color: #ffffff;
             text-align: center;
             padding: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         @media (max-width: 768px) {
@@ -208,6 +232,11 @@
     </style>
 </head>
 <body>
+        <!-- Background Video -->
+        <video class="background-video" autoplay loop muted playsinline>
+            <source src="pics/10288594-hd_1920_1080_25fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     <nav>
         <div class="nav-content">
             <a href="index.html" class="logo">DB</a>
