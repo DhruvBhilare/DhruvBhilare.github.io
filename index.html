@@ -255,19 +255,128 @@
 
         .project-content {
             padding: 1.5rem;
+            color: var(--aboutmetext-color);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .project-title {
             font-size: 1.25rem;
             margin-bottom: 1rem;
             color: var(--aboutmetext-color);
+            text-align: center;
         }
 
         .project-description {
             font-size: 0.9rem;
             color: #666;
             margin-bottom: 1rem;
+            text-align: center;
         }
+
+        /* Project tags and action buttons */
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .project-tag {
+            background-color: #ecf024;
+            color: #3b080a;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .project-info {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(4px);
+            padding: 1.2rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #fff;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .project-info.show {
+            display: block;
+            transform: translateY(0);
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn.info {
+            width: 32px;
+            padding: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e9ecef;
+            color: #495057;
+        }
+
+        .btn.info.active {
+            background-color: #dee2e6;
+            color: #212529;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.9rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-color);
+            background-color: var(--header-footer-color);
+        }
+
+        .btn.secondary {
+            background-color: rgba(0,0,0,0.08);
+            color: var(--aboutmetext-color);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .btn:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
+        .btn.secondary:hover {
+            background-color: rgba(0,0,0,0.12);
+        }
+
+        .btn:active { transform: translateY(1px);}        
 
         .project-link {
             display: inline-block;
@@ -448,6 +557,69 @@
             cursor: not-allowed;
         }
 
+        /* VHSMO - Featured startup styles */
+        .project-tag--startup {
+            background: linear-gradient(90deg,#f4a261,#e76f51);
+            color: #fff;
+            font-weight: 800;
+            box-shadow: 0 6px 18px rgba(231,111,81,0.18);
+        }
+
+        .featured-startup {
+            position: relative;
+            z-index: 2;
+            border-radius: 12px;
+            overflow: visible;
+        }
+
+        /* strong halo behind the card */
+        .featured-startup::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 260px;
+            height: 120px;
+            transform: translate(-50%, -30%);
+            background: radial-gradient(circle at center, rgba(118,219,219,0.35), rgba(231,111,81,0.18) 45%, transparent 60%);
+            filter: blur(36px);
+            z-index: 0;
+            transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+            opacity: 0.95;
+            pointer-events: none;
+        }
+
+        .featured-startup:hover::before {
+            transform: translate(-50%, -28%) scale(1.08);
+            filter: blur(54px);
+            opacity: 1;
+        }
+
+        .featured-startup .project-image {
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 20px 80px rgba(118,219,219,0.28);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            border-radius: 8px;
+        }
+
+        .featured-startup:hover .project-image { transform: scale(1.03); box-shadow: 0 36px 140px rgba(118,219,219,0.36); }
+
+        /* Button color variants for VHSMO */
+        .btn.website {
+            background: linear-gradient(90deg,#2d9cff,#1b79d6);
+            color: #fff;
+            border: none;
+            box-shadow: 0 8px 24px rgba(45,156,255,0.18);
+        }
+
+        .btn.instagram {
+            background: linear-gradient(90deg,#ff6b9a,#f0932b);
+            color: #fff;
+            border: none;
+            box-shadow: 0 8px 24px rgba(240,147,43,0.14);
+        }
+
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
             .nav-content {
@@ -459,6 +631,27 @@
                 width: 100%;
                 padding: 1rem;
                 justify-content: space-between;
+            }
+
+            .project-image,
+            .project-video {
+                height: 140px;
+            }
+
+            .project-title {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.45rem 0.6rem;
+                font-size: 0.95rem;
+            }
+
+            .featured-startup::before {
+                width: 140px;
+                height: 70px;
+                filter: blur(24px);
+                transform: translate(-50%, -38%);
             }
 
             .mobile-menu-toggle {
@@ -505,6 +698,67 @@
             .project-grid {
                 grid-template-columns: 1fr;
                 padding: 0 1rem;
+            }
+
+            /* Mobile optimizations */
+            /* Hide heavy background video on small screens to save bandwidth */
+            .background-video-container {
+                display: none;
+            }
+
+            .project-image,
+            .project-video {
+                height: 160px;
+            }
+
+            .project-content {
+                padding: 1rem;
+            }
+
+            .project-title {
+                font-size: 1.1rem;
+            }
+
+            /* Stack action buttons vertically for easier tapping */
+            .project-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: stretch;
+            }
+
+            .project-actions .btn.website,
+            .project-actions .btn.instagram {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Keep info button accessible but compact */
+            .project-actions .btn.info {
+                width: 48px;
+                height: 48px;
+                padding: 0.5rem;
+                border-radius: 50%;
+                align-self: center;
+            }
+
+            /* Make overlay readable on small screens */
+            .project-info {
+                max-height: 60vh;
+                overflow: auto;
+                padding: 1rem;
+                border-top-left-radius: 12px;
+                border-top-right-radius: 12px;
+                left: 0;
+                right: 0;
+            }
+
+            /* Reduce the featured halo on smaller screens */
+            .featured-startup::before {
+                width: 180px;
+                height: 90px;
+                transform: translate(-50%, -36%);
+                filter: blur(30px);
+                opacity: 0.9;
             }
 
             .social-links-container {
@@ -612,7 +866,7 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
-            <img src="pics/suitpic.jpg" alt="Dhruv Bhilare" class="profile-pic">
+            <img src="pics/newpfp.jpg" alt="Dhruv Bhilare" class="profile-pic">
             <div class="hero-text-container">
                 <h1 class="hero-text">
                     <p>Hey, I'm <span class="highlight">Dhruv Bhilare</span>. Here, you can check out what I'm working on. </p>
@@ -626,61 +880,129 @@
         <section id="projects">
             <h2 class="section-header">Projects</h2>
             <div class="projects">
-                <div class="project-grid">
-                    <article class="project-card">
-                        <video class="project-video" autoplay loop muted playsinline>
-                            <source src="pics/airmoprojectpagevid.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+            <div class="project-grid">
+                    <article class="project-card featured-startup">
+                        <img src="pics/WhatsApp Image 2025-09-08 at 12.49.24_bda1b10d.jpg" alt="VHSMO" class="project-image">
                         <div class="project-content">
-                            <h3 class="project-title">AirMo-V1.0</h3>
-                            <p class="project-description">A wireless, gesture-based, wearable computer mouse designed to revolutionize computer interaction.</p>
-                            <a href="project-airmo.html" class="project-link">Learn More →</a>
+                            <h3 class="project-title">VHSMO</h3>
+                            <div class="project-tags">
+                                  <span class="project-tag project-tag--startup">Startup</span>
+                                    <span class="project-tag project-tag--startup">Patent Pending</span>
+                              
+                            
+                              
+                            </div>
+                            <div class="project-actions" style="position:relative; z-index:3;">
+                                <a class="btn website" href="https://www.vhsmo.com/" target="_blank" aria-label="Visit VHSMO website"><i class="fas fa-globe"></i> Website</a>
+                                <a class="btn instagram" href="https://www.instagram.com/vhsmo.cam" target="_blank" aria-label="VHSMO Instagram"><i class="fab fa-instagram"></i> Instagram</a>
+                                <button class="btn info" aria-label="More info about VHSMO" data-target="vhsmoinfo"><i class="fas fa-info"></i></button>
+                            </div>
+                            <div id="vhsmoinfo" class="project-info" style="z-index:10; pointer-events:auto;">
+                                VHSMO (pronounced "Vis-Mo") is a consumer hardware-software startup I Co-Founded, where I serve as the Tech Lead. 
+                                It’s a patent-pending, pocket-sized wireless camera that redefines how photos are captured and shared.
+                                Check out the website and instagram of VHSMO to learn more!
+                            </div>
                         </div>
                     </article>
 
                     <article class="project-card">
-                        <video class="project-video" autoplay loop muted playsinline>
-                            <source src="pics/0207(4).mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <img src="pics/airmov1.22pic.jpg" alt="Airmo-V1.1" class="project-image">
                         <div class="project-content">
-                            <h3 class="project-title">Assistive Web Navigation Device</h3>
-                            <p class="project-description">Empowering differently-abled individuals to browse the internet with customized solutions.</p>
-                            <a href="project-assistive.html" class="project-link">Learn More →</a>
+                            <h3 class="project-title">Airmo-V1.02</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">IMU</span>
+                             
+                                <span class="project-tag">HID</span>
+                                   <span class="project-tag">Custom Bluetooth Communication</span>
+                            </div>
+                            <div class="project-actions">
+                                <a class="btn" href="https://youtu.be/RQWCLmG04g4?si=EZt5n7R743uAUde1" target="_blank" aria-label="Watch demo for AirMo"><i class="fab fa-youtube"></i> Watch demo</a>
+                                <a class="btn secondary" href="https://github.com/DhruvBhilare" target="_blank" aria-label="View code for AirMo"><i class="fab fa-github"></i>Code</a>
+                                <button class="btn info" aria-label="More info about Airmo" data-target="nav-info"><i class="fas fa-info"></i></button>
+                            </div>
+                            <div id="nav-info" class="project-info">
+                               AirMo is a wearable gesture-controlled presenter tool that allows users to control slides, media, and on-screen content using natural hand movements — 
+                               no remotes or clickers required. Built on an Arduino-compatible microcontroller with an IMU sensor and Bluetooth HID interface, it translates motion data into 
+                               precise mouse and keyboard inputs with low-latency responsiveness. I designed the custom PCB integrating motion sensing, wireless communication, and battery 
+                               management in a compact wearable form factor. AirMo won the CEAS Innovation Challenge – Spring 2025 at the University of Cincinnati.
+                            </div>
                         </div>
                     </article>
 
                     <article class="project-card">
-                        <video class="project-video" autoplay loop muted playsinline>
-                            <source src="pics/visionmatedisplayvid.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                         <img src="pics/Visionmatepic.jpg" alt="VisionMate" class="project-image">
                         <div class="project-content">
                             <h3 class="project-title">VisionMate</h3>
-                            <p class="project-description">A smart, AI-powered pair of glasses that provides real-time audio descriptions of the environment to enhance accessibility for the visually impaired.</p>
-                            <a href="project-glassesforblind.html" class="project-link">Learn More →</a>
+                            <div class="project-tags">
+                                <span class="project-tag">ESP32-S3</span>
+                                <span class="project-tag">Gemini 1.5 Flash</span>
+                                <span class="project-tag">Base64 Encoding</span>
+                                <span class="project-tag">Google-TTS</span>
+                            </div>
+                            <div class="project-actions">
+                                <a class="btn" href="https://youtu.be/nuuEkeQvVWE?si=z_UfNUdrLnIAveHF" target="_blank" aria-label="Watch demo for VisionMate"><i class="fab fa-youtube"></i> Watch demo</a>
+                                <a class="btn secondary" href="https://github.com/DhruvBhilare" target="_blank" aria-label="View code for VisionMate"><i class="fab fa-github"></i>Code</a>
+                                <button class="btn info" aria-label="More info about VisionMate" data-target="vision-info"><i class="fas fa-info"></i></button>
+                            </div>
+                            <div id="vision-info" class="project-info">
+                               VisionMate is an embedded assistive vision system for the visually impaired, built on the Xiao ESP32-S3 Sense. It integrates Google Gemini 1.5 Flash 
+                               and Text-to-Speech to interpret real-time scenes and deliver contextual audio feedback through I²S-based bone-conduction speakers. 
+                               Supporting translation, currency recognition, and object detection, VisionMate combines optimized firmware, low-latency
+                                processing, and balanced hardware design, demonstrating practical applications of embedded AI, signal processing, and wearable 
+                                mixed-signal systems.
+                            </div>
                         </div>
                     </article>
 
                     <article class="project-card">
-                        <video class="project-video" autoplay loop muted playsinline>
-                            <source src="pics/0207(2).mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                          <img src="pics/memorapic.jpg" alt="Memora" class="project-image">
                         <div class="project-content">
-                            <h3 class="project-title">Auto Room Lights</h3>
-                            <p class="project-description">Smart lighting system with precise people detection and automated control.</p>
-                            <a href="project-lights.html" class="project-link">Learn More →</a>
+                            <h3 class="project-title">Memora</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">EdgeImpulse</span>
+                                <span class="project-tag">ComputerVision</span>
+                                <span class="project-tag">EmbeddedML</span>
+                                <span class="project-tag">I2C</span>
+                            </div>
+                            <div class="project-actions">
+                                <a class="btn" href="https://youtu.be/pyqpO5HNaQE?si=KSLw6BnrcewusKTe" target="_blank" aria-label="Watch demo for Memora"><i class="fab fa-youtube"></i> Watch demo</a>
+                                <a class="btn secondary" href="https://github.com/DhruvBhilare" target="_blank" aria-label="View code for Memora"><i class="fab fa-github"></i>Code</a>
+                                <button class="btn info" aria-label="More info about Memora" data-target="Memora-info"><i class="fas fa-info"></i></button>
+                            </div>
+                            <div id="Memora-info" class="project-info">
+                                Memora is an offline edge-AI assistive system built on the ESP32 that performs real-time face 
+                                and object recognition without cloud dependency. It features a custom distilled Edge Impulse 
+                                inference library optimized for constrained hardware, enabling efficient CNN inference
+                                 and sub-three-second end-to-end response. The system integrates an ESP32-based vision unit, 
+                                 secure local Wi-Fi transfer, and a wearable I²S + LCD bracelet for synchronized visual and
+                                  audio reminders- demonstrating advanced embedded ML, signal processing, and hardware-software
+                                   co-design in a compact, low-power architecture.
+                            </div>
                         </div>
                     </article>
 
                     <article class="project-card">
-                        <img src="pics/nerfgunpic.webp" alt="Immersive Game Controller" class="project-image">
+                        <img src="pics/WhatsApp Image 2025-10-26 at 12.36.32_310d6833.jpg" alt="Immersive Game Controller" class="project-image">
                         <div class="project-content">
-                            <h3 class="project-title">Immersive Game Controller</h3>
-                            <p class="project-description">Modified Nerf gun for an immersive FPS gaming experience without VR.</p>
-                            <a href="project-controller.html" class="project-link">Learn More →</a>
+                            <h3 class="project-title">Echonyx</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">DigitalSignalProcessing</span>
+                                <span class="project-tag">BoneConductionAudio</span>
+                                <span class="project-tag">BluetoothA2DP</span>
+                            </div>
+                            <div class="project-actions">
+                                <a class="btn" href="https://www.youtube.com/watch?v=nuuEkeQvVWE&" target="_blank" aria-label="View image/demo for Immersive Game Controller"><i class="fab fa-youtube"></i> Watch demo</a>
+                                <a class="btn secondary" href="https://github.com/DhruvBhilare/Echonyx-MakeOhio2025" target="_blank" aria-label="View code for Echonyx"><i class="fab fa-github"></i>Code</a>
+                                <button class="btn info" aria-label="More info about Echonyx" data-target="controller-info"><i class="fas fa-info"></i></button>
+                            </div>
+                            <div id="controller-info" class="project-info">
+                                Echonyx is a low-cost, embedded hearing-assist system built into sunglasses, designed for users with conductive hearing loss. Powered by an ESP32 controller, 
+                                it runs a custom real-time DSP pipeline that replays ambient audio through bone-conduction transducers with sub-100 ms latency.
+                             The firmware integrates a Bluetooth 5.0 A2DP interface and dedicated DAC path, enabling seamless switching between hearing-aid
+                                 and open-ear headphone modes. The hardware design emphasizes low-noise analog amplification, power-efficient audio routing, 
+                                 and mixed-signal optimization, showcasing end-to-end expertise in embedded DSP, wireless audio systems, and wearable circuit
+                                  design.
+                            </div>
                         </div>
                     </article>
 
@@ -690,8 +1012,12 @@
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">In the Works</h3>
-                            <p class="project-description">A mysterious project is brewing. Stay tuned for something exciting!</p>
-                            <span class="project-link">Coming Soon →</span>
+                            <div class="project-tags">
+                                <span class="project-tag">TBD</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn secondary" disabled>Coming Soon</button>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -707,7 +1033,7 @@
                 <div class="social-links">
                     <a href="https://www.youtube.com/@dhruvbhilare6676" target="_blank"><i class="fab fa-youtube"></i></a>
                     <a href="https://github.com/DhruvBhilare" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/dhruv-bhilare-374ab1346" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.linkedin.com/in/dhruv-bhilare" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <div class="mail-btn">
                         <i class="fas fa-envelope"></i>
                         <div class="mail-bubble">
@@ -724,29 +1050,72 @@
             <h2 class="section-header">About Me</h2>
             <div class="about-box">
                 <div class="about-content">
-                    <p>Hello! I am Dhruv Bhilare, a freshman majoring in Computer Engineering at the University of Cincinnati. 
+                    <p>Hello! I am Dhruv Bhilare, a Sophmore majoring in Computer and Electrical Engineering at the University of Cincinnati. 
                         Born and raised in India, I moved to the United States to further my education and pursue my passion 
-                        for robotics and innovation. My expertise lies in designing circuits, building robots, and developing 
-                        practical engineering solutions through hands-on experimentation.</p>
+                        for robotics and innovation. </p>
                     <p>With a strong foundation in both hardware and software, I enjoy working on projects that blend electronics, 
                         programming, and mechanical design. My goal is to create innovative and efficient technologies that solve real-world problems.</p>
-                    <p>Beyond engineering, I enjoy playing basketball, working out, and listening to music. 
-                        These hobbies keep me motivated, help me maintain a balanced lifestyle, and inspire creativity in my projects.</p>
+                    <p>When I’m not soldering circuits or writing code, you’ll probably find me playing Basketball, working out, or listening to music. 
+                        Those moments keep me balanced and often spark the next big idea.</p>
                     <br>
                     <p>This website serves as a portfolio of my work, showcasing my projects, ideas, and technical expertise. 
-                        I am always eager to learn, collaborate, and push the boundaries of what's possible in robotics and technology.</p>
+                        I am always eager to learn, collaborate, and push the boundaries of what's possible in robotics and hardware-software technologies.</p>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Dhruv Bhilare. All rights reserved.</p>
+        <p>Currently based in Cincinnati, OH</p>
     </footer>
 
     <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Info button functionality
+            const infoButtons = document.querySelectorAll('.btn.info');
+            
+            // Hide info when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.btn.info') && !e.target.closest('.project-info')) {
+                    document.querySelectorAll('.project-info').forEach(section => {
+                        section.classList.remove('show');
+                    });
+                    document.querySelectorAll('.btn.info').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+            
+            infoButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const targetId = this.getAttribute('data-target');
+                    const infoSection = document.getElementById(targetId);
+                    
+                    // Toggle active state on button
+                    this.classList.toggle('active');
+                    
+                    // Toggle info section
+                    if (infoSection) {
+                        const wasVisible = infoSection.classList.contains('show');
+                        
+                        // Hide all info sections first
+                        document.querySelectorAll('.project-info').forEach(section => {
+                            section.classList.remove('show');
+                        });
+                        document.querySelectorAll('.btn.info').forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                        
+                        // Show this section if it wasn't visible
+                        if (!wasVisible) {
+                            infoSection.classList.add('show');
+                            this.classList.add('active');
+                        }
+                    }
+                });
+            });
             // Mail button functionality
             const mailBtn = document.querySelector('.mail-btn');
             const mailBubble = mailBtn.querySelector('.mail-bubble');
