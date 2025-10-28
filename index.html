@@ -701,8 +701,11 @@
             }
 
             /* Mobile optimizations */
-            /* Hide heavy background video on small screens to save bandwidth */
+            /* Keep background image but hide video on small screens */
             .background-video-container {
+                display: block;
+            }
+            .background-video:not(img) {
                 display: none;
             }
 
@@ -1188,5 +1191,6 @@
     </script>
 </body>
 </html>
+
 
 
